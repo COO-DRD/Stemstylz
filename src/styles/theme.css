@@ -1,0 +1,289 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* StemConcepts Absolute Palette - Night Executive */
+  --obsidian-black: #000000;
+  --charcoal: #121212;
+  --stem-green: #4CAF50;
+  --pure-white: #FFFFFF;
+  --silver-mist: #B0B0B0;
+  
+  /* Text Opacity Levels */
+  --text-high-emphasis: rgba(255, 255, 255, 0.87);
+  --text-medium-emphasis: rgba(255, 255, 255, 0.60);
+  --text-disabled: rgba(255, 255, 255, 0.38);
+  
+  /* Theme Mappings */
+  --background: var(--obsidian-black);
+  --foreground: var(--pure-white);
+  --primary: var(--stem-green);
+  --primary-foreground: var(--obsidian-black);
+  --secondary: var(--charcoal);
+  --muted: var(--silver-mist);
+  --border: rgba(76, 175, 80, 0.1);
+  --ring: var(--stem-green);
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Spacing */
+  --section-padding: clamp(4rem, 10vw, 8rem);
+  
+  /* Luxury Transitions - Vehicle Motion */
+  --transition-luxury: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@theme inline {
+  --color-obsidian: var(--obsidian-black);
+  --color-charcoal: var(--charcoal);
+  --color-stem-green: var(--stem-green);
+  --color-white: var(--pure-white);
+  --color-silver: var(--silver-mist);
+}
+
+@layer base {
+  * {
+    outline-color: var(--stem-green);
+    outline-offset: 2px;
+  }
+
+  body {
+    @apply bg-obsidian text-white;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+
+  /* Absolute Typography System */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text-high-emphasis);
+  }
+
+  h1 {
+    font-size: clamp(3rem, 8vw, 7rem);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  h4 {
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+  }
+
+  p {
+    font-family: var(--font-sans);
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    font-weight: 300;
+    color: var(--text-medium-emphasis);
+    letter-spacing: 0.05em;
+  }
+
+  /* Button System - Liquid Hover */
+  button, .btn {
+    font-family: var(--font-sans);
+    font-size: clamp(0.75rem, 1vw, 0.875rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.4s var(--transition-luxury);
+  }
+
+  /* Remove all default borders and shadows */
+  button, input, select, textarea {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/* Anti-Box Design - Ambient Green Glow */
+.glass {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 10px 30px rgba(0, 255, 76, 0.05);
+  border: none;
+}
+
+/* Deep Ambient Shadow */
+.shadow-deep {
+  box-shadow: 
+    0 10px 40px rgba(0, 255, 76, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.shadow-deeper {
+  box-shadow: 
+    0 20px 60px rgba(0, 255, 76, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Liquid Hover Button */
+.btn-liquid {
+  background: transparent;
+  color: var(--stem-green);
+  padding: 1rem 2rem;
+  position: relative;
+  border: 1px solid var(--stem-green);
+  overflow: hidden;
+  transition: all 0.4s var(--transition-luxury);
+}
+
+.btn-liquid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--stem-green);
+  transform: translateY(100%);
+  transition: transform 0.4s var(--transition-luxury);
+  z-index: -1;
+}
+
+.btn-liquid:hover {
+  color: var(--obsidian-black);
+}
+
+.btn-liquid:hover::before {
+  transform: translateY(0);
+}
+
+/* Ghost Button with Underline */
+.btn-ghost {
+  background: transparent;
+  color: var(--stem-green);
+  padding: 1rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  transition: all 0.4s var(--transition-luxury);
+}
+
+.btn-ghost::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--stem-green);
+  transform: scaleX(0.3);
+  transform-origin: left;
+  transition: transform 0.4s var(--transition-luxury);
+}
+
+.btn-ghost:hover::after {
+  transform: scaleX(1);
+}
+
+/* Editorial Asymmetric Grid Helper */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 0;
+}
+
+/* Negative Space Enforcement */
+.luxury-container {
+  padding-left: clamp(2rem, 10vw, 15vw);
+  padding-right: clamp(2rem, 10vw, 15vw);
+}
+
+/* Safe Zone - 120px padding to prevent header overlap */
+.safe-zone {
+  padding-top: 120px;
+}
+
+/* Whisper Text Effect */
+.text-whisper {
+  color: var(--text-medium-emphasis);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+}
+
+/* Live Status Pulse Animation */
+@keyframes pulse-green {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.pulse-live {
+  animation: pulse-green 2s var(--transition-luxury) infinite;
+}
+
+/* Progress Bar */
+.progress-stem {
+  height: 2px;
+  background: rgba(76, 175, 80, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-stem::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--stem-green);
+  transform: translateX(-100%);
+  animation: progress 1.5s var(--transition-luxury) forwards;
+}
+
+@keyframes progress {
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Floating Input with Green Accent */
+.input-stem {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(176, 176, 176, 0.2);
+  color: var(--text-high-emphasis);
+  transition: all 0.4s var(--transition-luxury);
+}
+
+.input-stem:focus {
+  border-bottom-color: var(--stem-green);
+  box-shadow: 0 10px 30px rgba(0, 255, 76, 0.08);
+}
+
+/* Glowing Route Line Effect */
+.route-glow {
+  filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.6));
+}
+
+/* Luxury Texture Overlay */
+.texture-overlay {
+  position: relative;
+}
+
+.texture-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(76, 175, 80, 0.02) 2px,
+      rgba(76, 175, 80, 0.02) 4px
+    );
+  pointer-events: none;
+}
